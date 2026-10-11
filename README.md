@@ -37,8 +37,17 @@ Luego abre http://127.0.0.1:8123 en el navegador.
 
 ## Despliegue
 
-Pensado para **Cloudflare Pages** (hosting estático gratuito) mediante
-despliegue por Git. Sin build: directorio de salida = raíz del repositorio.
+Publicado en **Cloudflare Pages** (hosting estático gratuito) con despliegue por
+Git.
+
+- **Sitio en producción:** https://nanas-design.pages.dev
+- **Repositorio:** https://github.com/YukitaSempai/nanas-design (privado)
+
+Cada `git push` a la rama `main` re-despliega el sitio automáticamente.
+
+- **Framework preset:** `None`
+- **Build command:** *(vacío)*
+- **Build output directory:** `/` (raíz, sin build)
 
 ## Próximos pasos (no implementados todavía)
 
