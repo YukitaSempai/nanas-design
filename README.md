@@ -41,7 +41,7 @@ Publicado en **Cloudflare Pages** (hosting estático gratuito) con despliegue po
 Git.
 
 - **Sitio en producción:** https://nanas-design.pages.dev
-- **Repositorio:** https://github.com/YukitaSempai/nanas-design (privado)
+- **Repositorio:** https://github.com/YukitaSempai/nanas-design (público)
 
 Cada `git push` a la rama `main` re-despliega el sitio automáticamente.
 
