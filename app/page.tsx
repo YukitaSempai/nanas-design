@@ -33,7 +33,7 @@ export default function Home() {
   return <>
     <SiteHeader />
     <main>
-      <section id="inicio" className="section-wrap hero-grid min-h-[740px] pb-16 pt-28 md:min-h-[850px] md:pb-20 md:pt-28">
+      <section id="inicio" className="section-wrap hero-grid relative min-h-[740px] pb-16 pt-28 md:min-h-[850px] md:pb-20 md:pt-28">
         <Reveal className="relative z-10 max-w-[510px]">
           <div className="eyebrow mb-7 flex items-center gap-3"><span className="h-px w-8 bg-[#a77e88]"/> Flores hechas para durar</div>
           <h1 className="serif max-w-[600px] text-[clamp(4rem,8vw,7.1rem)] leading-[.88] tracking-[-.055em] text-[#392c35]">Un pequeño<br/>gesto, <em className="text-[#a77e88]">para</em><br/><em className="text-[#a77e88]">siempre.</em></h1>
@@ -48,7 +48,7 @@ export default function Home() {
           <div className="floating-note"><div className="serif text-2xl text-[#704c62]">200<span className="text-[#a77e88]">+</span></div><div className="mt-0.5 text-[.57rem] uppercase tracking-[.16em] text-[#7d6b75]">historias florecidas</div></div>
           <span className="absolute left-[6%] top-[18%] -rotate-12 text-3xl text-[#b698a1]">✳</span><span className="absolute bottom-[21%] right-[8%] text-xl text-[#9ca287]">✳</span>
         </Reveal>
-        <Link href="#nosotros" aria-label="Desliza para conocer Nanas Design" className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 items-center gap-2 text-[.6rem] uppercase tracking-[.18em] text-[#9a8790] md:flex">Desliza para descubrir <ArrowDown size={13}/></Link>
+        <Link href="#nosotros" aria-label="Desliza para conocer Nanas Design" className="absolute bottom-8 left-1/2 z-20 hidden -translate-x-1/2 items-center gap-2 whitespace-nowrap text-[.6rem] uppercase tracking-[.18em] text-[#9a8790] transition-colors hover:text-[#704c62] md:flex">Desliza para descubrir <ArrowDown size={13}/></Link>
       </section>
 
       <div className="overflow-hidden border-y border-[#493743]/[.06] bg-[#f2e9e5] py-[18px]">
