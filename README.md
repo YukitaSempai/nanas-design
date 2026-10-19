@@ -22,7 +22,7 @@ Las cuentas, claves API, webhooks, modelo de catálogo y flujos de pago deben co
 
 ## Despliegue
 
-El sitio anterior está en Cloudflare Pages. Este proyecto usa Next.js y está listo para desplegarse en Vercel: importa el repositorio Git y configura allí las mismas variables de entorno que en `.env`. Los despliegues de Vercel son para producción al integrar la rama principal y previews para las demás ramas. El dominio `nanas-design.pages.dev` seguirá sirviendo la versión estática hasta que se configure un nuevo despliegue y, si se desea, se cambie el DNS/dominio.
+El proyecto está configurado para exportación estática de Next.js y Cloudflare Pages: `npm run build` genera el directorio `out/`. En Cloudflare Pages, usa el comando de build `npm run build` y el directorio de salida `out`. Al estar conectado al repositorio Git, Pages vuelve a desplegar cada push a la rama de producción. Las funciones que necesiten servidor (base de datos, autenticación y pagos) requieren cambiar a Cloudflare Workers o a Vercel.
 
 ## Estructura
 
