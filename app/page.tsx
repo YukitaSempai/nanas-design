@@ -5,14 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { storeItems } from "@/lib/tienda";
 
-const products = [
-  { name: "Ramo iluminado de fresitas", type: "Un favorito", description: "Un bouquet lleno de luz, pequeños detalles y ternura para celebrar a alguien especial.", price: "Desde $18", image: "/img/07.png" },
-  { name: "Arreglo mixto con peluche", type: "Hecho para ti", description: "Flores, un globo y ese detalle inesperado que convierte un día en recuerdo.", price: "Desde $65", image: "/img/08.png" },
-  { name: "Box de rosas y bombones", type: "Colección especial", description: "Una caja de rosas y sabores para regalar un momento que se queda contigo.", price: "A medida", image: "/img/09.webp" },
-  { name: "Ramo de fotos Polaroid", type: "Personalizable", description: "Tus flores favoritas acompañadas de fotografías para volver a mirar.", price: "Desde $15", image: "/img/27.png" },
-  { name: "Ramo vaquita", type: "Un toque divertido", description: "Color y encanto para cumpleaños, celebraciones y regalos inolvidables.", price: "Desde $10", image: "/img/39.jpg" },
-];
+/** Destacados de la portada, tomados del catálogo compartido de la tienda. */
+const products = storeItems.filter((item) => item.featured).map((item) => ({
+  name: item.name,
+  type: item.tag ?? "",
+  description: item.description,
+  price: item.priceLabel ?? `$${item.price}`,
+  image: item.image,
+}));
 
 const steps = [
   { n: "01", title: "Nos cuentas tu idea", body: "Hablamos de la ocasión, tus colores favoritos, el estilo y el presupuesto." },
