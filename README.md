@@ -1,58 +1,35 @@
 # Nanas Design
 
-Sitio web de **Nanas Design**, emprendimiento de arreglos florales artesanales
-hechos con cintas y telas (flores eternas).
+Sitio de Nanas Design: flores artesanales hechas con cintas y telas.
 
-## Estado actual
+## Desarrollo local
 
-- Sitio **estático** de una sola página (landing).
-- HTML + CSS + JavaScript en un solo archivo (`index.html`).
-- Sin backend, sin base de datos, sin proceso de build.
+1. Instala Node.js 20.19 o superior.
+2. En la terminal integrada de VS Code, ejecuta `npm install`.
+3. Ejecuta `npm run dev` y abre [http://localhost:3000](http://localhost:3000).
 
-## Tecnologías
+Next.js Fast Refresh actualiza la página al guardar archivos `.tsx`, `.ts` o `.css`. Guarda el proyecto en VS Code y deja el servidor de desarrollo corriendo para ver los cambios mientras trabajas.
 
-- HTML5 / CSS3 / JavaScript (vanilla)
-- [Bootstrap 5.3.3](https://getbootstrap.com/) (CDN, solo para el grid)
-- [Google Fonts](https://fonts.google.com/) — Playfair Display + Nunito
+## Stack preparado
+
+- Next.js 15, React 19 y TypeScript.
+- Tailwind CSS 4, componentes compatibles con shadcn/ui, Lucide y Framer Motion.
+- Prisma con esquema PostgreSQL listo para productos, consultas y pedidos.
+- Variables de entorno de ejemplo para Clerk, Cloudinary, Stripe, Mercado Pago y Resend en `.env.example`.
+- Imágenes locales en `public/img` para servirlas y optimizarlas con Next Image.
+
+Las cuentas, claves API, webhooks, modelo de catálogo y flujos de pago deben configurarse antes de activar autenticación, persistencia, carga de archivos o pagos reales. Copia `.env.example` a `.env` y completa los valores de las cuentas que decidas usar.
+
+## Despliegue
+
+El sitio anterior está en Cloudflare Pages. Este proyecto usa Next.js y está listo para desplegarse en Vercel: importa el repositorio Git y configura allí las mismas variables de entorno que en `.env`. Los despliegues de Vercel son para producción al integrar la rama principal y previews para las demás ramas. El dominio `nanas-design.pages.dev` seguirá sirviendo la versión estática hasta que se configure un nuevo despliegue y, si se desea, se cambie el DNS/dominio.
 
 ## Estructura
 
 ```
-.
-├── index.html   # Toda la página (HTML + CSS + JS embebidos)
-├── img/         # Imágenes locales del sitio
-└── .gitignore
+app/                   páginas y estilos globales
+components/            navegación, animaciones y botón UI
+lib/                   utilidades compartidas
+prisma/schema.prisma   modelos de base de datos
+public/img/            fotografías del sitio
 ```
-
-## Desarrollo local
-
-No requiere instalación de dependencias. Sirve la carpeta con cualquier
-servidor estático:
-
-```bash
-python -m http.server 8123
-```
-
-Luego abre http://127.0.0.1:8123 en el navegador.
-
-## Despliegue
-
-Publicado en **Cloudflare Pages** (hosting estático gratuito) con despliegue por
-Git.
-
-- **Sitio en producción:** https://nanas-design.pages.dev
-- **Repositorio:** https://github.com/YukitaSempai/nanas-design (público)
-
-Cada `git push` a la rama `main` re-despliega el sitio automáticamente.
-
-- **Framework preset:** `None`
-- **Build command:** *(vacío)*
-- **Build output directory:** `/` (raíz, sin build)
-
-## Próximos pasos (no implementados todavía)
-
-- Enlazar botones de contacto (WhatsApp, Instagram, email).
-- Menú móvil funcional (hamburger).
-- Reemplazar imágenes placeholder de Unsplash por fotos reales.
-- Optimizar el peso de las imágenes.
-- Backend, autenticación y base de datos (etapa futura).
