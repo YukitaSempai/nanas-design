@@ -22,7 +22,7 @@ Las cuentas, claves API, webhooks, modelo de catálogo y flujos de pago deben co
 
 ## Despliegue
 
-El proyecto está configurado para exportación estática de Next.js y Cloudflare Pages: `npm run build` genera el directorio `out/`. En Cloudflare Pages, usa el comando de build `npm run build` y el directorio de salida `out`. Al estar conectado al repositorio Git, Pages vuelve a desplegar cada push a la rama de producción. Las funciones que necesiten servidor (base de datos, autenticación y pagos) requieren cambiar a Cloudflare Workers o a Vercel.
+El proyecto está configurado para exportación estática de Next.js y Cloudflare Pages: `npm run build` genera el directorio `out/`. En Cloudflare Pages, usa el preset `Next.js (Static HTML Export)`, que ejecuta `npx next build` y publica `out/`. Al estar conectado al repositorio Git, Pages vuelve a desplegar cada push a la rama de producción. Las funciones que necesiten servidor (base de datos, autenticación y pagos) requieren cambiar a Cloudflare Workers o a Vercel.
 
 ## Estructura
 
