@@ -7,6 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "images:sync": "node scripts/sync-images.mjs",
+    "predev": "npm run images:sync",
+    "prebuild": "npm run images:sync",
     "db:generate": "prisma generate",
     "db:validate": "prisma validate"
   },

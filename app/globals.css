@@ -1,14 +1,61 @@
 @import "tailwindcss";
 
-:root { --ink: #392c35; --muted: #7d6b75; --plum: #704c62; --pink: #e4c9ce; --cream: #fbf8f4; --line: rgba(76, 53, 65, .12); }
+:root {
+  /* ── Paleta actual de Nanas Design ─────────────────────────────────────── */
+  --ink: #392c35;      /* texto principal */
+  --muted: #7d6b75;    /* texto secundario */
+  --plum: #704c62;     /* acento de marca */
+  --pink: #e4c9ce;     /* rosa */
+  --cream: #fbf8f4;    /* fondo */
+  --line: rgba(76, 53, 65, .12);
+
+  /* ── Tipografías ───────────────────────────────────────────────────────── */
+  /* Pendiente: cuando el cliente entregue sus fuentes, cámbialas aquí (o
+     cárgalas con next/font/local y apunta estas variables a la fuente). */
+  --brand-font-heading: "Cormorant Garamond", "Bodoni MT", Georgia, serif;
+  --brand-font-body: "DM Sans", "Aptos", Arial, sans-serif;
+  --brand-font-logo: var(--brand-font-heading);
+
+  /* ── Paleta de 5 tonos (PENDIENTE DEL CLIENTE) ─────────────────────────── */
+  /* Reemplaza estos cinco valores por los que entregue el cliente.
+     Uso de referencia en el diseño actual:
+       1 → textos principales/oscuros   (coincide con --ink)
+       2 → color de acento/marca        (coincide con --plum)
+       3 → acento suave                 (#a77e88)
+       4 → rosa                         (coincide con --pink)
+       5 → fondo                        (coincide con --cream)              */
+  --nana-1: #392c35;
+  --nana-2: #704c62;
+  --nana-3: #a77e88;
+  --nana-4: #e4c9ce;
+  --nana-5: #fbf8f4;
+}
+
+/* Tokens expuestos como utilidades de Tailwind:
+   p. ej. bg-nana-2, text-ink, border-line, font-heading, font-body. */
+@theme inline {
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-plum: var(--plum);
+  --color-pink: var(--pink);
+  --color-cream: var(--cream);
+  --color-line: var(--line);
+  --color-nana-1: var(--nana-1);
+  --color-nana-2: var(--nana-2);
+  --color-nana-3: var(--nana-3);
+  --color-nana-4: var(--nana-4);
+  --color-nana-5: var(--nana-5);
+  --font-heading: var(--brand-font-heading);
+  --font-body: var(--brand-font-body);
+}
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-body { margin: 0; background: var(--cream); color: var(--ink); font-family: "DM Sans", "Aptos", Arial, sans-serif; }
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--brand-font-body); }
 ::selection { background: #ead2d5; color: var(--ink); }
-.serif { font-family: "Cormorant Garamond", "Bodoni MT", Georgia, serif; }
+.serif { font-family: var(--brand-font-heading); }
 .section-wrap { width: min(1180px, calc(100% - 64px)); margin-inline: auto; }
 .eyebrow { color: var(--plum); font-size: .67rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
-.section-title { font-family: "Cormorant Garamond", "Bodoni MT", Georgia, serif; font-size: clamp(2.8rem, 5.5vw, 5rem); font-weight: 400; letter-spacing: -.04em; line-height: .98; }
+.section-title { font-family: var(--brand-font-heading); font-size: clamp(2.8rem, 5.5vw, 5rem); font-weight: 400; letter-spacing: -.04em; line-height: .98; }
 .section-title em { color: #a77e88; font-weight: 400; }
 .nav-link { position: relative; color: #5b4c54; font-size: .75rem; letter-spacing: .06em; transition: color .2s ease; }
 .nav-link::after { position:absolute; bottom:-6px; left:0; width:0; height:1px; background:var(--plum); content:""; transition:width .25s ease; }

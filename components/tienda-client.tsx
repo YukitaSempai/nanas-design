@@ -3,9 +3,10 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, Flower2, Gift, Package, Search, SearchX, Sparkles } from "lucide-react";
+import { ArrowUpRight, Clock, Flower2, Gift, MapPin, Package, Search, SearchX, Sparkles, Store, Truck } from "lucide-react";
 import { Reveal } from "@/components/reveal";
-import type { StoreCategory, StoreItem } from "@/lib/tienda";
+import { productOrderMessage, whatsappUrl } from "@/lib/whatsapp";
+import { storeMapsUrl, storeSchedule, type StoreCategory, type StoreItem } from "@/lib/tienda";
 
 const categoryIcons: Record<string, typeof Flower2> = { ramos: Flower2, arreglos: Sparkles, cajas: Package, regalos: Gift };
 
@@ -39,7 +40,8 @@ export function TiendaClient({ items, categories }: { items: StoreItem[]; catego
     const q = normalize(query.trim());
     const priceFilter = priceFilters.find((f) => f.id === price) ?? priceFilters[0];
     const filtered = items.filter((item) => {
-      const matchesQuery = !q || normalize(`${item.name} ${item.description} ${item.tag ?? ""}`).includes(q);
+      const categoryLabel = categories.find((c) => c.id === item.category)?.label ?? "";
+      const matchesQuery = !q || normalize(`${item.name} ${item.description} ${item.tag ?? ""} ${categoryLabel}`).includes(q);
       const matchesCategory = category === "all" || item.category === category;
       return matchesQuery && matchesCategory && priceFilter.test(item);
     });
@@ -47,7 +49,7 @@ export function TiendaClient({ items, categories }: { items: StoreItem[]; catego
     if (sort === "price-desc") filtered.sort((a, b) => (b.price ?? -1) - (a.price ?? -1));
     if (sort === "name") filtered.sort((a, b) => a.name.localeCompare(b.name, "es"));
     return filtered;
-  }, [items, query, category, price, sort]);
+  }, [items, categories, query, category, price, sort]);
 
   const activeFilters = query.trim() !== "" || category !== "all" || price !== "all";
   const clearFilters = () => { setQuery(""); setCategory("all"); setPrice("all"); };
@@ -58,8 +60,9 @@ export function TiendaClient({ items, categories }: { items: StoreItem[]; catego
         <nav aria-label="Ruta de navegación" className="mb-6 flex items-center gap-2 text-[.66rem] uppercase tracking-[.16em] text-[#8b7b83]">
           <Link href="/#inicio" className="transition-colors hover:text-[#704c62]">Inicio</Link><span aria-hidden>·</span><span className="text-[#704c62]">Tienda</span>
         </nav>
-        <div className="eyebrow mb-5 flex items-center gap-3"><span className="h-px w-8 bg-[#a77e88]"/> Productos y servicios</div>
+        <div className="eyebrow mb-5 flex items-center gap-3"><span className="h-px w-8 bg-[#a77e88]"/> Florista · Tienda de regalos</div>
         <h1 className="section-title max-w-[640px]">Encuentra tu<br/><em>próximo detalle.</em></h1>
+        <p className="mt-6 max-w-[520px] text-[.95rem] leading-7 text-[#7d6b75]">Arreglos florales con rosas, girasoles, tulipanes, lirios y mucho más 🌻🌹🌷 · Ramos de rosas eternas y bouquets para boda y eventos 💐 · Personalizamos tu arreglo con snacks en combos 🎁✨</p>
 
         <div className="relative mt-8 max-w-[560px]">
           <Search size={18} aria-hidden className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[#8b7b83]"/>
@@ -67,7 +70,7 @@ export function TiendaClient({ items, categories }: { items: StoreItem[]; catego
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Busca por nombre o palabra clave…"
+            placeholder="Busca rosas, ramos, regalos…"
             aria-label="Buscar en la tienda"
             className="h-14 w-full rounded-full border border-[#493743]/15 bg-white pl-14 pr-6 text-sm text-[#392c35] shadow-[0_10px_30px_rgba(70,45,53,.06)] outline-none transition-colors placeholder:text-[#a99aa2] focus:border-[#a77e88]"
           />
@@ -83,6 +86,16 @@ export function TiendaClient({ items, categories }: { items: StoreItem[]; catego
         </div>
       </Reveal>
     </section>
+
+    {/* Barra de información del negocio — horario, ubicación y entregas (estilo Marketplace/ML) */}
+    <div className="border-y border-[#493743]/[.07] bg-[#f2e9e5]">
+      <div className="section-wrap flex flex-wrap items-center justify-center gap-x-9 gap-y-3 py-4 text-[.68rem] text-[#755b68]">
+        <span className="flex items-center gap-2"><Clock size={14} aria-hidden className="text-[#a77e88]"/><strong className="font-semibold text-[#392c35]">Horario:</strong> {storeSchedule}</span>
+        <a href={storeMapsUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2 transition-colors hover:text-[#704c62]"><MapPin size={14} aria-hidden className="text-[#a77e88]"/><strong className="font-semibold text-[#392c35]">Aragua, Venezuela</strong> · ver en Google Maps</a>
+        <span className="flex items-center gap-2"><Truck size={14} aria-hidden className="text-[#a77e88]"/><strong className="font-semibold text-[#392c35]">Entregas semanales</strong> en Maracay y zonas céntricas</span>
+        <a href="https://wa.me/584128985585?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noreferrer" className="flex items-center gap-2 transition-colors hover:text-[#704c62]"><Store size={14} aria-hidden className="text-[#a77e88]"/>Pedidos por <strong className="font-semibold text-[#392c35]">WhatsApp</strong></a>
+      </div>
+    </div>
 
     <section id="catalogo" className="bg-[#f4efec] pb-20 pt-8 md:pb-28">
       <div className="section-wrap">
@@ -107,7 +120,7 @@ export function TiendaClient({ items, categories }: { items: StoreItem[]; catego
               const cat = categories.find((c) => c.id === item.category);
               const Icon = categoryIcons[item.category] ?? Flower2;
               return <Reveal key={item.id} delay={(i % 3) * .07}><article className="product-card group flex h-full flex-col">
-                <Link href={`https://wa.me/584128985585?text=${encodeURIComponent(`Hola, me interesa ${item.name}`)}`} target="_blank" rel="noreferrer" className="flex h-full flex-col">
+                <Link href={whatsappUrl(productOrderMessage(item.name))} target="_blank" rel="noreferrer" className="flex h-full flex-col">
                   <div className="product-image">
                     <Image src={item.image} alt={item.name} fill sizes="(max-width: 640px) 90vw, (max-width: 1000px) 45vw, 30vw"/>
                     <span className="absolute left-4 top-4 flex items-center gap-1.5 bg-[#fbf8f4]/92 px-3 py-1.5 text-[.58rem] font-medium uppercase tracking-[.12em] text-[#704c62]"><Icon size={12} aria-hidden/>{cat?.label}</span>
