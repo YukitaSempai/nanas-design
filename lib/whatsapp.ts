@@ -33,3 +33,13 @@ export function collectionInquiryMessage(collection: string, category?: string) 
     ? `Hola, me interesa un producto de la colección "${collection}" (${category})`
     : `Hola, me interesa un producto de la colección "${collection}"`;
 }
+
+/**
+ * Mensaje para conocer las opciones de envío según la ubicación del cliente
+ * (estado o ciudad). El costo y la empresa se acuerdan en el mismo chat.
+ */
+export function shippingInquiryMessage(destination: string) {
+  return destination
+    ? `Hola, quiero consultar las opciones de envío para ${destination}`
+    : "Hola, quiero consultar las opciones de envío disponibles";
+}

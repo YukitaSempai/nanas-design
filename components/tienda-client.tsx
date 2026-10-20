@@ -87,12 +87,12 @@ export function TiendaClient({ items, categories }: { items: StoreItem[]; catego
       </Reveal>
     </section>
 
-    {/* Barra de información del negocio — horario, ubicación y entregas (estilo Marketplace/ML) */}
+    {/* Barra de información del negocio — horario, ubicación y envíos (estilo Marketplace/ML) */}
     <div className="border-y border-[#493743]/[.07] bg-[#f2e9e5]">
       <div className="section-wrap flex flex-wrap items-center justify-center gap-x-9 gap-y-3 py-4 text-[.68rem] text-[#755b68]">
         <span className="flex items-center gap-2"><Clock size={14} aria-hidden className="text-[#a77e88]"/><strong className="font-semibold text-[#392c35]">Horario:</strong> {storeSchedule}</span>
         <a href={storeMapsUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2 transition-colors hover:text-[#704c62]"><MapPin size={14} aria-hidden className="text-[#a77e88]"/><strong className="font-semibold text-[#392c35]">Aragua, Venezuela</strong> · ver en Google Maps</a>
-        <span className="flex items-center gap-2"><Truck size={14} aria-hidden className="text-[#a77e88]"/><strong className="font-semibold text-[#392c35]">Entregas semanales</strong> en Maracay y zonas céntricas</span>
+        <span className="flex items-center gap-2"><Truck size={14} aria-hidden className="text-[#a77e88]"/><strong className="font-semibold text-[#392c35]">Envíos a todo Venezuela</strong> · MRW, Zoom y más</span>
         <a href="https://wa.me/584128985585?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noreferrer" className="flex items-center gap-2 transition-colors hover:text-[#704c62]"><Store size={14} aria-hidden className="text-[#a77e88]"/>Pedidos por <strong className="font-semibold text-[#392c35]">WhatsApp</strong></a>
       </div>
     </div>

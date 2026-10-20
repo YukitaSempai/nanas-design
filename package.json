@@ -8,8 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "images:sync": "node scripts/sync-images.mjs",
-    "predev": "npm run images:sync",
-    "prebuild": "npm run images:sync",
+    "brand:assets": "node scripts/make-brand-assets.mjs",
+    "predev": "npm run images:sync && npm run brand:assets",
+    "prebuild": "npm run images:sync && npm run brand:assets",
     "db:generate": "prisma generate",
     "db:validate": "prisma validate"
   },

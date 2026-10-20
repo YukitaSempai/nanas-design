@@ -28,7 +28,7 @@ export function BrandLogo({ variant = "header" }: BrandLogoProps) {
           width={brand.logo.width}
           height={brand.logo.height}
           priority={!isFooter}
-          className={isFooter ? "h-8 w-auto" : "h-9 w-auto"}
+          className={isFooter ? "h-10 w-auto" : "h-11 w-auto"}
         />
       </Link>
     );

@@ -7,11 +7,12 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { TiendaClient } from "@/components/tienda-client";
 import { ColeccionesExplorer } from "@/components/colecciones-explorer";
-import { storeCategories, storeCollections, storeItems, storeMapsUrl, storeSchedule } from "@/lib/tienda";
+import { EnviosInquiry } from "@/components/envios-inquiry";
+import { storeCategories, storeCollections, storeItems, storeMapsUrl, storeSchedule, storeShipping } from "@/lib/tienda";
 
 export const metadata: Metadata = {
-  title: "Tienda — flores y regalos en Maracay | Nanas Design",
-  description: "Florista y tienda de regalos en Aragua, Venezuela. Arreglos florales, ramos de rosas eternas, bouquets para bodas y eventos, combos con snacks y entregas semanales en Maracay.",
+  title: "Tienda — flores y envíos a todo Venezuela | Nanas Design",
+  description: "Floristería y tienda de regalos en Aragua, Venezuela. Enviamos a todo el país por MRW, Zoom y otras empresas de encomiendas. Arreglos florales, ramos de rosas eternas, bouquets para bodas y eventos y combos con snacks.",
 };
 
 const services = [
@@ -64,7 +65,7 @@ export default function TiendaPage() {
         </div>
       </section>
 
-      {/* Información práctica: horario, ubicación y entregas */}
+      {/* Información práctica: horario, ubicación y envíos */}
       <section className="bg-[#f4efec] py-20 md:py-28">
         <div className="section-wrap">
           <Reveal className="mx-auto mb-12 max-w-[620px] text-center md:mb-16">
@@ -85,10 +86,11 @@ export default function TiendaPage() {
             </div></Reveal>
             <Reveal delay={.14}><div className="h-full border border-[#493743]/10 bg-[#fbf8f4] p-7">
               <span className="grid h-11 w-11 place-items-center rounded-full bg-[#eee0d2]"><Truck size={18} className="text-[#957754]" aria-hidden/></span>
-              <h3 className="serif mt-5 text-[1.5rem] leading-tight text-[#392c35]">Entregas</h3>
-              <p className="mt-2 text-sm leading-6 text-[#877780]">Realizamos entregas <strong className="font-semibold text-[#624859]">semanalmente</strong> en zonas céntricas de Maracay y zonas cercanas 📍🚌</p>
+              <h3 className="serif mt-5 text-[1.5rem] leading-tight text-[#392c35]">Envíos a todo Venezuela</h3>
+              <p className="mt-2 text-sm leading-6 text-[#877780]">Enviamos a cualquier estado o ciudad por empresas de encomiendas como <strong className="font-semibold text-[#624859]">MRW, Zoom</strong> y otras alternativas 📦 En {storeShipping.localReference} manejamos <strong className="font-semibold text-[#624859]">entregas locales semanales</strong> 📍🚌</p>
             </div></Reveal>
           </div>
+          <Reveal className="mt-6"><EnviosInquiry/></Reveal>
         </div>
       </section>
 

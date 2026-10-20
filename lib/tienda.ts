@@ -4,7 +4,9 @@
  * Negocio: Florista y tienda de regalos (compras y ventas minoristas).
  * - Horario de atención: 9:00 am – 10:00 pm
  * - Ubicación: Aragua, Venezuela (emprendimiento sin local físico todavía)
- * - Entregas semanales en zonas céntricas de Maracay y zonas cercanas
+ * - Entregas locales en Maracay y zonas céntricas de Aragua
+ * - Envíos a todo el territorio venezolano por empresas de encomiendas
+ *   (MRW, Zoom y otras alternativas según la ubicación del cliente)
  *
  * Catálogo poblado con los productos REALES de la portada (nombres,
  * descripciones, precios e imágenes originales). La portada y la tienda
@@ -22,6 +24,22 @@ export const storeSchedule = "9:00 am – 10:00 pm";
 
 /** Ubicación del emprendimiento en Google Maps (Aragua, Venezuela). */
 export const storeMapsUrl = "https://www.google.com/maps/search/Aragua%2C%20Venezuela/@10.0636,-67.2848,17z?hl=es";
+
+/**
+ * Información de envíos — cobertura nacional.
+ *
+ * La tienda no se limita a una ciudad: envía a cualquier estado de Venezuela
+ * mediante empresas de encomiendas. Maracay se conserva como referencia de
+ * entregas locales, nunca como límite geográfico del servicio.
+ */
+export const storeShipping = {
+  /** Alcance mostrado en la interfaz. */
+  coverage: "Todo Venezuela",
+  /** Empresas de encomiendas disponibles (se confirman según la ubicación). */
+  carriers: ["MRW", "Zoom"],
+  /** Ciudad de referencia para las entregas locales. */
+  localReference: "Maracay",
+} as const;
 
 export type StoreKind = "producto" | "servicio";
 

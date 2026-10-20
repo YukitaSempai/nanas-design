@@ -5,26 +5,25 @@ reconstruir nada.
 
 ---
 
-## 1. Identidad visual (pendiente del cliente)
+## 1. Identidad visual
 
-### 1.1 Logotipo
-- **Qué enviar:** el logo en alta resolución y con fondo transparente. El texto
-  dibujado a mano "Nana.Design" funciona mejor como **SVG vectorial**; si viene
-  como imagen, usar PNG con transparencia.
-- **Dónde colocarlo:** `public/brand/` (por ejemplo `public/brand/logo.svg`).
-- **Cómo activarlo:** en `lib/brand.ts`, reemplazar `logo: null` por:
-  ```ts
-  logo: {
-    src: "/brand/logo.svg",        // fondos claros
-    srcLight: "/brand/logo-light.svg", // opcional, fondos oscuros (footer)
-    width: 320,                     // ancho real del archivo
-    height: 80,                     // alto real del archivo
-    alt: "Nanas Design",
-  },
-  ```
-- Mientras `logo` sea `null`, el sitio dibuja el logotipo tipográfico actual
-  (idéntico al de hoy). El componente que lo resuelve es
-  `components/brand-logo.tsx` y ya se usa en el header y el footer.
+### 1.1 Logotipo ✅ integrado
+- **Fuente:** el cliente entrega el archivo en **`img/01.png`** (PNG con
+  transparencia). Ese es el logotipo del negocio.
+- **Generación automática:** `scripts/make-brand-assets.mjs` crea versiones
+  optimizadas en `public/brand/` antes de `dev` y `build`:
+  - `logo.png` (768 px de ancho) → header y footer.
+  - `icon-32.png`, `icon-48.png`, `icon-192.png` → icono de pestaña.
+  - `apple-touch-icon.png` (180 px, fondo crema porque iOS no admite alfa).
+- **Configuración:** `lib/brand.ts` → `brand.logo`. El componente
+  `components/brand-logo.tsx` lo usa en header y footer.
+- **Para cambiar el logotipo:** basta con reemplazar `img/01.png` y recompilar
+  (`npm run build`). No hay que tocar código.
+- `public/brand/` está en `.gitignore` porque es un archivo generado.
+
+> Nota de contraste: el logotipo actual es de tono lavanda claro. En el footer
+> oscuro destaca bien; en el header crema es más suave. Si el cliente entrega una
+> variante oscura o un SVG, se integra en `brand.logo.src` / `srcLight`.
 
 ### 1.2 Tipografía
 - **Qué enviar:** los archivos de fuente (preferible `.woff2`) para títulos,
