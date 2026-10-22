@@ -10,15 +10,15 @@ import type { StoreCollection, StoreMedia } from "@/lib/tienda";
 /**
  * Explorador de colecciones.
  *
- * Navegación inspirada en marketplaces (colección → categoría → imágenes), con
- * la identidad de Nanas Design. Está pensado para convivir con dos tipos de
- * imagen:
+ * Navegación inspirada en marketplaces (colección → catálogo → categoría →
+ * imágenes), con la identidad de Nanas Design. Está pensado para convivir con
+ * dos tipos de imagen:
  * - `individual`: muestra un solo producto.
  * - `collage`: reúne varios productos (y sus precios) en una sola imagen.
  *
  * Cuando una imagen no tiene formato definido todavía, se presenta como
- * referencia de catálogo y el botón de WhatsApp consulta por la colección y la
- * categoría (nunca inventa un nombre ni un precio).
+ * referencia de catálogo y el botón de WhatsApp consulta por la colección, el
+ * catálogo y la categoría (nunca inventa un nombre ni un precio).
  */
 
 function formatLabel(format?: StoreMedia["format"]) {
@@ -27,28 +27,44 @@ function formatLabel(format?: StoreMedia["format"]) {
   return "Catálogo";
 }
 
-type MediaEntry = { media: StoreMedia; categoryLabel: string };
+type MediaEntry = { media: StoreMedia; categoryLabel: string; catalogLabel: string };
 
 export function ColeccionesExplorer({ collections }: { collections: StoreCollection[] }) {
   const [collectionId, setCollectionId] = useState(collections[0]?.id ?? "");
+  const [catalogId, setCatalogId] = useState("");
   const [categoryId, setCategoryId] = useState("all");
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const collection = collections.find((c) => c.id === collectionId) ?? collections[0];
-  const categories = collection?.categories ?? [];
+  const catalogs = collection?.catalogs ?? [];
+  const catalog = catalogs.find((c) => c.id === catalogId) ?? catalogs[0];
+  const categories = catalog?.categories ?? [];
 
   const mediaItems = useMemo<MediaEntry[]>(() => {
-    const visibleCategories = categoryId === "all" ? categories : categories.filter((c) => c.id === categoryId);
-    return visibleCategories.flatMap((category) => category.media.map((media) => ({ media, categoryLabel: category.label })));
-  }, [categories, categoryId]);
+    if (!catalog) return [];
+    const visibleCategories = categoryId === "all" ? catalog.categories : catalog.categories.filter((c) => c.id === categoryId);
+    return visibleCategories.flatMap((category) =>
+      category.media.map((media) => ({ media, categoryLabel: category.label, catalogLabel: catalog.label })),
+    );
+  }, [catalog, categoryId]);
 
   const totalMedia = categories.reduce((count, category) => count + category.media.length, 0);
   const openEntry = openIndex === null ? null : mediaItems[openIndex] ?? null;
 
-  const selectCollection = (id: string) => {
-    setCollectionId(id);
+  const resetBrowse = () => {
     setCategoryId("all");
     setOpenIndex(null);
+  };
+
+  const selectCollection = (id: string) => {
+    setCollectionId(id);
+    setCatalogId("");
+    resetBrowse();
+  };
+
+  const selectCatalog = (id: string) => {
+    setCatalogId(id);
+    resetBrowse();
   };
 
   // Navegación con teclado dentro del visor.
@@ -65,6 +81,9 @@ export function ColeccionesExplorer({ collections }: { collections: StoreCollect
 
   if (!collection) return null;
 
+  const countMedia = (item: { categories: { media: unknown[] }[] }) =>
+    item.categories.reduce((total, category) => total + category.media.length, 0);
+
   const chipClass = (active: boolean) =>
     [
       "inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-xs font-medium transition-colors",
@@ -79,7 +98,7 @@ export function ColeccionesExplorer({ collections }: { collections: StoreCollect
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {collections.map((item, index) => {
           const active = item.id === collection.id;
-          const count = item.categories.reduce((total, category) => total + category.media.length, 0);
+          const count = item.catalogs.reduce((total, catalogItem) => total + countMedia(catalogItem), 0);
           return (
             <Reveal key={item.id} delay={index * 0.06}>
               <button
@@ -96,7 +115,7 @@ export function ColeccionesExplorer({ collections }: { collections: StoreCollect
                 <span className="min-w-0 flex-1">
                   <span className="block text-[.6rem] font-semibold uppercase tracking-[.16em] text-[#a77e88]">Colección</span>
                   <span className="serif mt-1 block text-[1.5rem] leading-tight text-[#392c35]">{item.label}</span>
-                  <span className="mt-1 flex items-center gap-1.5 text-[.68rem] text-[#8b7b83]"><Images size={12} aria-hidden /> {count} {count === 1 ? "imagen" : "imágenes"}</span>
+                  <span className="mt-1 flex items-center gap-1.5 text-[.68rem] text-[#8b7b83]"><Images size={12} aria-hidden /> {count} {count === 1 ? "imagen" : "imágenes"} · {item.catalogs.length} {item.catalogs.length === 1 ? "catálogo" : "catálogos"}</span>
                 </span>
               </button>
             </Reveal>
@@ -106,7 +125,37 @@ export function ColeccionesExplorer({ collections }: { collections: StoreCollect
 
       {collection.description && <p className="mt-6 max-w-[560px] text-sm leading-6 text-[#7d6b75]">{collection.description}</p>}
 
-      {/* Categorías (subcategorías de la colección) */}
+      {/* Catálogos de la colección */}
+      {catalogs.length > 1 && (
+        <div className="mt-8 flex flex-wrap gap-3" role="tablist" aria-label="Catálogos de la colección">
+          {catalogs.map((item) => {
+            const active = catalog ? item.id === catalog.id : false;
+            const count = countMedia(item);
+            return (
+              <button
+                key={item.id}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                onClick={() => selectCatalog(item.id)}
+                className={`flex items-center gap-3 border px-3 py-2 text-left transition-all ${
+                  active ? "border-[#704c62] bg-white shadow-[0_10px_26px_rgba(70,45,53,.09)]" : "border-[#493743]/10 bg-white/60 hover:border-[#a77e88] hover:bg-white"
+                }`}
+              >
+                <span className="relative h-11 w-11 shrink-0 overflow-hidden bg-[#f2e9e7]">
+                  {item.cover && <Image src={item.cover} alt="" fill sizes="44px" className="object-cover" />}
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-xs font-medium leading-tight text-[#392c35]">{item.label}</span>
+                  <span className="mt-0.5 flex items-center gap-1 text-[.62rem] text-[#8b7b83]"><Images size={11} aria-hidden /> {count} {count === 1 ? "imagen" : "imágenes"}</span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Categorías (subcategorías del catálogo seleccionado) */}
       <div className="mt-8 flex flex-wrap gap-2.5">
         <button type="button" onClick={() => setCategoryId("all")} aria-pressed={categoryId === "all"} className={chipClass(categoryId === "all")}>
           <LayoutGrid size={14} aria-hidden /> Todas <span className="opacity-60">{totalMedia}</span>
@@ -147,9 +196,10 @@ export function ColeccionesExplorer({ collections }: { collections: StoreCollect
               <div>
                 <span className="text-[.6rem] font-semibold uppercase tracking-[.16em] text-[#a77e88]">{formatLabel(openEntry.media.format)} · {openEntry.categoryLabel}</span>
                 <p className="serif mt-1 text-[1.4rem] leading-tight text-[#392c35]">{openEntry.media.note ?? collection.label}</p>
+                <p className="mt-1 text-xs leading-5 text-[#877780]">{openEntry.catalogLabel}</p>
                 {openEntry.media.format === "collage" && <p className="mt-1 text-xs leading-5 text-[#877780]">Esta imagen reúne varios productos. Cuéntanos cuál te interesa y te pasamos el detalle.</p>}
               </div>
-              <a href={whatsappUrl(collectionInquiryMessage(collection.label, openEntry.categoryLabel))} target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#714c65] px-6 py-3 text-sm font-medium text-white shadow-[0_8px_22px_rgba(113,76,101,.19)] transition-all hover:-translate-y-0.5 hover:bg-[#5e3c54]">
+              <a href={whatsappUrl(collectionInquiryMessage(collection.label, openEntry.categoryLabel, openEntry.catalogLabel))} target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#714c65] px-6 py-3 text-sm font-medium text-white shadow-[0_8px_22px_rgba(113,76,101,.19)] transition-all hover:-translate-y-0.5 hover:bg-[#5e3c54]">
                 Pedir por WhatsApp <ArrowUpRight size={15} aria-hidden />
               </a>
             </div>

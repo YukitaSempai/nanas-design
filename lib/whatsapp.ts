@@ -24,13 +24,14 @@ export function productOrderMessage(productName: string) {
 }
 
 /**
- * Mensaje para consultar una colección o categoría (útil para imágenes tipo
- * collage, donde una sola imagen reúne varios productos y aún no conviene
+ * Mensaje para consultar una colección, catálogo o categoría (útil para imágenes
+ * tipo collage, donde una sola imagen reúne varios productos y aún no conviene
  * comprometerse con un nombre o precio inventado).
  */
-export function collectionInquiryMessage(collection: string, category?: string) {
-  return category
-    ? `Hola, me interesa un producto de la colección "${collection}" (${category})`
+export function collectionInquiryMessage(collection: string, category?: string, catalog?: string) {
+  const detail = [catalog, category].filter(Boolean).join(" · ");
+  return detail
+    ? `Hola, me interesa un producto de la colección "${collection}" (${detail})`
     : `Hola, me interesa un producto de la colección "${collection}"`;
 }
 
