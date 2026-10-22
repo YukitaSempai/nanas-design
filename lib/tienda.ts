@@ -158,12 +158,13 @@ export type StoreCollection = {
 const comboSanValentinPath = "/img/combo san Valentín";
 const catalogo1Path = `${comboSanValentinPath}/catologo 1 rosas y tulipanes`;
 const catalogo2Path = `${comboSanValentinPath}/catalogo 2 girasoles, ramos maquillaje`;
+const catalogo3Path = `${comboSanValentinPath}/catalogo 3 ramos gomitas y personalizados`;
 
 export const storeCollections: StoreCollection[] = [
   {
     id: "combo-san-valentin",
     label: "Combo San Valentín",
-    description: "Selección especial de San Valentín organizada en dos catálogos: rosas y tulipanes, y girasoles con ramos y maquillaje. Cada imagen puede mostrar una opción o varias.",
+    description: "Selección especial de San Valentín organizada en tres catálogos: rosas y tulipanes; girasoles, ramos y maquillaje; y ramos temáticos con gomitas y personalizados. Cada imagen puede mostrar una opción o varias.",
     cover: `${catalogo1Path}/bouquets/1.jpg`,
     catalogs: [
       {
@@ -260,6 +261,45 @@ export const storeCollections: StoreCollection[] = [
             media: [
               { id: "c2-cajas-personalizadas-1", src: `${catalogo2Path}/cajas personalizadas/8.jpg`, alt: "Caja personalizada del Catálogo 2, Combo San Valentín" },
               { id: "c2-cajas-personalizadas-2", src: `${catalogo2Path}/cajas personalizadas/9.jpg`, alt: "Caja personalizada del Catálogo 2, Combo San Valentín" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "catalogo-3-ramos-gomitas-personalizados",
+        label: "Catálogo 3: Ramos gomitas y personalizados",
+        cover: `${catalogo3Path}/ramos tematicos/1.jpg`,
+        categories: [
+          {
+            id: "ramos-tematicos",
+            label: "Ramos temáticos",
+            media: [
+              { id: "c3-ramos-tematicos-1", src: `${catalogo3Path}/ramos tematicos/1.jpg`, alt: "Ramo temático del Catálogo 3, Combo San Valentín" },
+              { id: "c3-ramos-tematicos-2", src: `${catalogo3Path}/ramos tematicos/2.jpg`, alt: "Ramo temático del Catálogo 3, Combo San Valentín" },
+              { id: "c3-ramos-tematicos-3", src: `${catalogo3Path}/ramos tematicos/3.jpg`, alt: "Ramo temático del Catálogo 3, Combo San Valentín" },
+              { id: "c3-ramos-tematicos-4", src: `${catalogo3Path}/ramos tematicos/4.jpg`, alt: "Ramo temático del Catálogo 3, Combo San Valentín" },
+              { id: "c3-ramos-tematicos-5", src: `${catalogo3Path}/ramos tematicos/5.jpg`, alt: "Ramo temático del Catálogo 3, Combo San Valentín" },
+            ],
+          },
+          {
+            id: "ramos-de-limpiapipas",
+            label: "Ramos de limpiapipas",
+            media: [
+              { id: "c3-ramos-limpiapipas-1", src: `${catalogo3Path}/ramos de limpiapipas/6.jpg`, alt: "Ramo de limpiapipas del Catálogo 3, Combo San Valentín" },
+            ],
+          },
+          {
+            id: "rosas-y-girasoles",
+            label: "Rosas y girasoles",
+            media: [
+              { id: "c3-rosas-girasoles-1", src: `${catalogo3Path}/rosas y girasoles/7.jpg`, alt: "Rosas y girasoles del Catálogo 3, Combo San Valentín" },
+            ],
+          },
+          {
+            id: "ramos-de-gomitas",
+            label: "Ramos de gomitas",
+            media: [
+              { id: "c3-ramos-gomitas-1", src: `${catalogo3Path}/ramos de gomitas/8.jpg`, alt: "Ramo de gomitas del Catálogo 3, Combo San Valentín" },
             ],
           },
         ],
