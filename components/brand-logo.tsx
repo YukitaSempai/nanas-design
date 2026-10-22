@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { brand } from "@/lib/brand";
@@ -12,13 +15,14 @@ type BrandLogoProps = {
  *
  * - Si `brand.logo` está configurado, muestra el archivo en alta resolución
  *   respetando proporciones y transparencia.
- * - Si no, dibuja el logotipo tipográfico actual (idéntico al original), de modo
- *   que nada cambia hasta recibir el logo definitivo.
+ * - Si el archivo no está disponible (o `brand.logo` es null), dibuja el
+ *   logotipo tipográfico original, de modo que nunca quede un hueco roto.
  */
 export function BrandLogo({ variant = "header" }: BrandLogoProps) {
   const isFooter = variant === "footer";
+  const [failed, setFailed] = useState(false);
 
-  if (brand.logo) {
+  if (brand.logo && !failed) {
     const src = isFooter && brand.logo.srcLight ? brand.logo.srcLight : brand.logo.src;
     return (
       <Link href="/#inicio" aria-label={brand.name} className="inline-flex items-center">
@@ -28,6 +32,7 @@ export function BrandLogo({ variant = "header" }: BrandLogoProps) {
           width={brand.logo.width}
           height={brand.logo.height}
           priority={!isFooter}
+          onError={() => setFailed(true)}
           className={isFooter ? "h-10 w-auto" : "h-11 w-auto"}
         />
       </Link>

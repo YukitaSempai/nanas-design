@@ -27,5 +27,7 @@ pnpm-debug.log*
 out/
 .vercel/
 
-# Assets de marca generados a partir de img/01.png (predev/prebuild)
-public/brand/
+# Assets de marca generados a partir de img/01.png
+# NOTA: se versionan a propósito. Cloudflare Pages no ejecuta `prebuild`, así que
+# si estuvieran ignorados, el logotipo y los favicons darían 404 en producción.
+# Para actualizar el logo: reemplazar img/01.png y ejecutar `npm run brand:assets`.
