@@ -196,10 +196,10 @@ export function ColeccionesExplorer({ collections }: { collections: StoreCollect
               <div>
                 <span className="text-[.6rem] font-semibold uppercase tracking-[.16em] text-[#a77e88]">{formatLabel(openEntry.media.format)} · {openEntry.categoryLabel}</span>
                 <p className="serif mt-1 text-[1.4rem] leading-tight text-[#392c35]">{openEntry.media.note ?? collection.label}</p>
-                <p className="mt-1 text-xs leading-5 text-[#877780]">{openEntry.catalogLabel}</p>
+                {catalogs.length > 1 && <p className="mt-1 text-xs leading-5 text-[#877780]">{openEntry.catalogLabel}</p>}
                 {openEntry.media.format === "collage" && <p className="mt-1 text-xs leading-5 text-[#877780]">Esta imagen reúne varios productos. Cuéntanos cuál te interesa y te pasamos el detalle.</p>}
               </div>
-              <a href={whatsappUrl(collectionInquiryMessage(collection.label, openEntry.categoryLabel, openEntry.catalogLabel))} target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#714c65] px-6 py-3 text-sm font-medium text-white shadow-[0_8px_22px_rgba(113,76,101,.19)] transition-all hover:-translate-y-0.5 hover:bg-[#5e3c54]">
+              <a href={whatsappUrl(collectionInquiryMessage(collection.label, openEntry.categoryLabel, catalogs.length > 1 ? openEntry.catalogLabel : undefined))} target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#714c65] px-6 py-3 text-sm font-medium text-white shadow-[0_8px_22px_rgba(113,76,101,.19)] transition-all hover:-translate-y-0.5 hover:bg-[#5e3c54]">
                 Pedir por WhatsApp <ArrowUpRight size={15} aria-hidden />
               </a>
             </div>
