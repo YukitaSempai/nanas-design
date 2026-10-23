@@ -160,6 +160,10 @@ const catalogo1Path = `${comboSanValentinPath}/catologo 1 rosas y tulipanes`;
 const catalogo2Path = `${comboSanValentinPath}/catalogo 2 girasoles, ramos maquillaje`;
 const catalogo3Path = `${comboSanValentinPath}/catalogo 3 ramos gomitas y personalizados`;
 
+/** Rutas públicas de las colecciones de flores amarillas (respetan las carpetas del cliente). */
+const floresAmarillas1Path = "/img/flores amarillas catalogo parte 1";
+const floresAmarillas2Path = "/img/flores amarillas edicion limitada";
+
 export const storeCollections: StoreCollection[] = [
   {
     id: "combo-san-valentin",
@@ -300,6 +304,149 @@ export const storeCollections: StoreCollection[] = [
             label: "Ramos de gomitas",
             media: [
               { id: "c3-ramos-gomitas-1", src: `${catalogo3Path}/ramos de gomitas/8.jpg`, alt: "Ramo de gomitas del Catálogo 3, Combo San Valentín" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "flores-amarillas-parte-1",
+    label: "Flores Amarillas · Parte 1",
+    description: "Primera parte de la selección de flores amarillas: ramos de rosas, girasoles, ramos combinados, tulipanes y flores individuales. Cada imagen puede mostrar una opción o varias.",
+    cover: `${floresAmarillas1Path}/ramo de 7 rosas/1.jpg`,
+    catalogs: [
+      {
+        id: "catalogo-parte-1",
+        label: "Catálogo Parte 1",
+        cover: `${floresAmarillas1Path}/ramo de 7 rosas/1.jpg`,
+        categories: [
+          {
+            id: "ramo-de-7-rosas",
+            label: "Ramo de 7 rosas",
+            media: [
+              { id: "fa1-ramo-7-rosas-1", src: `${floresAmarillas1Path}/ramo de 7 rosas/1.jpg`, alt: "Ramo de 7 rosas de la colección Flores Amarillas (Parte 1)" },
+            ],
+          },
+          {
+            id: "girasoles-mariposa",
+            label: "Girasoles mariposa",
+            media: [
+              { id: "fa1-girasoles-mariposa-1", src: `${floresAmarillas1Path}/girasoles mariposa/2.jpg`, alt: "Girasoles mariposa de la colección Flores Amarillas (Parte 1)" },
+            ],
+          },
+          {
+            id: "girasoles-gigantes-medianos",
+            label: "Girasoles gigantes y medianos",
+            media: [
+              { id: "fa1-girasoles-gigantes-1", src: `${floresAmarillas1Path}/girasoles gigantes y medianos ramos/3.jpg`, alt: "Girasoles gigantes y medianos de la colección Flores Amarillas (Parte 1)" },
+              { id: "fa1-girasoles-gigantes-2", src: `${floresAmarillas1Path}/girasoles gigantes y medianos ramos/4.jpg`, alt: "Girasoles gigantes y medianos de la colección Flores Amarillas (Parte 1)" },
+            ],
+          },
+          {
+            id: "ramo-de-rosas",
+            label: "Ramo de rosas",
+            media: [
+              { id: "fa1-ramo-rosas-1", src: `${floresAmarillas1Path}/ramo de rosas/5.jpg`, alt: "Ramo de rosas de la colección Flores Amarillas (Parte 1)" },
+            ],
+          },
+          {
+            id: "rosas-con-flor-centrada",
+            label: "Rosas con flor centrada",
+            media: [
+              { id: "fa1-rosas-flor-centrada-1", src: `${floresAmarillas1Path}/rosas con flor centrada/6.jpg`, alt: "Rosas con flor centrada de la colección Flores Amarillas (Parte 1)" },
+            ],
+          },
+          {
+            id: "ramos-combinados",
+            label: "Ramos combinados",
+            media: [
+              { id: "fa1-ramos-combinados-1", src: `${floresAmarillas1Path}/ramos combinados/7.jpg`, alt: "Ramo combinado de la colección Flores Amarillas (Parte 1)" },
+            ],
+          },
+          {
+            id: "tulipanes",
+            label: "Tulipanes",
+            media: [
+              { id: "fa1-tulipanes-1", src: `${floresAmarillas1Path}/tulipanes/8.jpg`, alt: "Tulipanes de la colección Flores Amarillas (Parte 1)" },
+            ],
+          },
+          {
+            id: "flores-individuales",
+            label: "Flores individuales",
+            media: [
+              { id: "fa1-flores-individuales-1", src: `${floresAmarillas1Path}/flores individuales/9.jpg`, alt: "Flores individuales de la colección Flores Amarillas (Parte 1)" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "flores-amarillas-edicion-limitada",
+    label: "Flores Amarillas · Edición Limitada",
+    description: "Edición limitada de flores amarillas: maxi girasol, buchones, bouquet atardecer, ramo mixto, lirio y margaritas. Cada imagen puede mostrar una opción o varias.",
+    cover: `${floresAmarillas2Path}/maxi girasol/1.jpg`,
+    catalogs: [
+      {
+        id: "catalogo-edicion-limitada",
+        label: "Edición Limitada",
+        cover: `${floresAmarillas2Path}/maxi girasol/1.jpg`,
+        categories: [
+          {
+            id: "maxi-girasol",
+            label: "Maxi girasol",
+            media: [
+              { id: "fa2-maxi-girasol-1", src: `${floresAmarillas2Path}/maxi girasol/1.jpg`, alt: "Maxi girasol de la colección Flores Amarillas (Edición Limitada)" },
+            ],
+          },
+          {
+            id: "buchon-sunny",
+            label: "Buchón Sunny",
+            media: [
+              { id: "fa2-buchon-sunny-1", src: `${floresAmarillas2Path}/buchon sunny/2.jpg`, alt: "Buchón Sunny de la colección Flores Amarillas (Edición Limitada)" },
+            ],
+          },
+          {
+            id: "mini-buchon",
+            label: "Mini buchón",
+            media: [
+              { id: "fa2-mini-buchon-1", src: `${floresAmarillas2Path}/mini buchon/3.jpg`, alt: "Mini buchón de la colección Flores Amarillas (Edición Limitada)" },
+            ],
+          },
+          {
+            id: "girasol-gigante-mariposa",
+            label: "Girasol gigante mariposa",
+            media: [
+              { id: "fa2-girasol-gigante-mariposa-1", src: `${floresAmarillas2Path}/girasol gigante mariposa/4.jpg`, alt: "Girasol gigante mariposa de la colección Flores Amarillas (Edición Limitada)" },
+            ],
+          },
+          {
+            id: "bouquet-atardecer",
+            label: "Bouquet atardecer",
+            media: [
+              { id: "fa2-bouquet-atardecer-1", src: `${floresAmarillas2Path}/bouquet atardecer/5.jpg`, alt: "Bouquet atardecer de la colección Flores Amarillas (Edición Limitada)" },
+            ],
+          },
+          {
+            id: "ramo-mixto",
+            label: "Ramo mixto",
+            media: [
+              { id: "fa2-ramo-mixto-1", src: `${floresAmarillas2Path}/ramo mixto/6.jpg`, alt: "Ramo mixto de la colección Flores Amarillas (Edición Limitada)" },
+            ],
+          },
+          {
+            id: "lirio-rapunzel",
+            label: "Lirio Rapunzel",
+            media: [
+              { id: "fa2-lirio-rapunzel-1", src: `${floresAmarillas2Path}/lirio rapunzel/7.jpg`, alt: "Lirio Rapunzel de la colección Flores Amarillas (Edición Limitada)" },
+            ],
+          },
+          {
+            id: "margarita-gerberas",
+            label: "Margarita gerberas",
+            media: [
+              { id: "fa2-margarita-gerberas-1", src: `${floresAmarillas2Path}/margarita gerberas/8.jpg`, alt: "Margarita gerberas de la colección Flores Amarillas (Edición Limitada)" },
             ],
           },
         ],
