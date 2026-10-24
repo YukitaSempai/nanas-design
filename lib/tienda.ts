@@ -159,11 +159,19 @@ const comboSanValentinPath = "/img/combo san Valentín";
 const catalogo1Path = `${comboSanValentinPath}/catologo 1 rosas y tulipanes`;
 const catalogo2Path = `${comboSanValentinPath}/catalogo 2 girasoles, ramos maquillaje`;
 const catalogo3Path = `${comboSanValentinPath}/catalogo 3 ramos gomitas y personalizados`;
+const catalogo4Path = `${comboSanValentinPath}/catalogo 4`;
 
 /** Rutas públicas de la colección "Combo Flores Amarillas" (respetan las carpetas del cliente). */
 const comboFloresAmarillasPath = "/img/combo flores amarillas";
 const floresAmarillas1Path = `${comboFloresAmarillasPath}/flores amarillas`;
 const floresAmarillas2Path = `${comboFloresAmarillasPath}/flores amarillas edicion limitada`;
+const floresAmarillas21sPath = `${comboFloresAmarillasPath}/flores amarillas 21s/temporada 2026`;
+
+/** Rutas públicas de las colecciones individuales (una carpeta por colección). */
+const bouquetPath = "/img/bouquet";
+const buchonesPath = "/img/buchones";
+const cajaBombonesPath = "/img/caja con bombones";
+const tulipanesEternosPath = "/img/tulipanes eternos";
 
 export const storeCollections: StoreCollection[] = [
   {
@@ -309,12 +317,47 @@ export const storeCollections: StoreCollection[] = [
           },
         ],
       },
+      {
+        id: "catalogo-4-flores-y-regalos",
+        label: "Catálogo 4: Flores y regalos",
+        cover: `${catalogo4Path}/flores individuales/1.jpg`,
+        categories: [
+          {
+            id: "flores-individuales",
+            label: "Flores individuales",
+            media: [
+              { id: "c4-flores-individuales-1", src: `${catalogo4Path}/flores individuales/1.jpg`, alt: "Flores individuales del Catálogo 4, Combo San Valentín" },
+            ],
+          },
+          {
+            id: "gorras-y-hotweels",
+            label: "Gorras y hotweels",
+            media: [
+              { id: "c4-gorras-hotweels-1", src: `${catalogo4Path}/gorras y hotweels/1.jpg`, alt: "Gorras y hotweels del Catálogo 4, Combo San Valentín" },
+            ],
+          },
+          {
+            id: "ramos-con-fotos",
+            label: "Ramos con fotos",
+            media: [
+              { id: "c4-ramos-con-fotos-1", src: `${catalogo4Path}/ramos con fotos/1.jpg`, alt: "Ramo con fotos del Catálogo 4, Combo San Valentín" },
+            ],
+          },
+          {
+            id: "ramos-de-chucherias",
+            label: "Ramos de chucherías",
+            media: [
+              { id: "c4-ramos-chucherias-1", src: `${catalogo4Path}/ramos de chucherias/1.jpg`, alt: "Ramo de chucherías del Catálogo 4, Combo San Valentín" },
+            ],
+          },
+        ],
+      },
     ],
   },
   {
     id: "combo-flores-amarillas",
     label: "Combo Flores Amarillas",
-    description: "Selección de flores amarillas organizada en dos catálogos: flores amarillas y edición limitada. Cada imagen puede mostrar una opción o varias.",
+    description: "Selección de flores amarillas organizada en tres catálogos: flores amarillas, flores amarillas 21s y edición limitada. Cada imagen puede mostrar una opción o varias.",
     cover: `${floresAmarillas1Path}/ramo de 7 rosas/1.jpg`,
     catalogs: [
       {
@@ -382,6 +425,62 @@ export const storeCollections: StoreCollection[] = [
         ],
       },
       {
+        id: "catalogo-flores-amarillas-21s",
+        label: "Catálogo: Flores amarillas 21s",
+        cover: `${floresAmarillas21sPath}/flores con mariposas/1.jpg`,
+        categories: [
+          {
+            id: "flores-con-mariposas",
+            label: "Flores con mariposas",
+            media: [
+              { id: "fa21-flores-mariposas-1", src: `${floresAmarillas21sPath}/flores con mariposas/1.jpg`, alt: "Flores con mariposas del Combo Flores Amarillas (temporada 2026)" },
+            ],
+          },
+          {
+            id: "flores-de-limpiapipas",
+            label: "Flores de limpiapipas",
+            media: [
+              { id: "fa21-flores-limpiapipas-1", src: `${floresAmarillas21sPath}/flores de limpiapipas/1.jpg`, alt: "Flores de limpiapipas del Combo Flores Amarillas (temporada 2026)" },
+            ],
+          },
+          {
+            id: "girasoles-eternos",
+            label: "Girasoles eternos",
+            media: [
+              { id: "fa21-girasoles-eternos-1", src: `${floresAmarillas21sPath}/girasoles eternos/1.jpg`, alt: "Girasoles eternos del Combo Flores Amarillas (temporada 2026)" },
+            ],
+          },
+          {
+            id: "lirio-rapunzel",
+            label: "Lirio Rapunzel",
+            media: [
+              { id: "fa21-lirio-rapunzel-1", src: `${floresAmarillas21sPath}/lirio rapunzel/1.jpg`, alt: "Lirio Rapunzel del Combo Flores Amarillas (temporada 2026)" },
+            ],
+          },
+          {
+            id: "ramos-van-gogh",
+            label: "Ramos Van Gogh",
+            media: [
+              { id: "fa21-ramos-van-gogh-1", src: `${floresAmarillas21sPath}/ramos van gogh/1.jpg`, alt: "Ramo Van Gogh del Combo Flores Amarillas (temporada 2026)" },
+            ],
+          },
+          {
+            id: "rosas-eternas",
+            label: "Rosas eternas",
+            media: [
+              { id: "fa21-rosas-eternas-1", src: `${floresAmarillas21sPath}/rosas eternas/1.jpg`, alt: "Rosas eternas del Combo Flores Amarillas (temporada 2026)" },
+            ],
+          },
+          {
+            id: "tulipanes-eternos",
+            label: "Tulipanes eternos",
+            media: [
+              { id: "fa21-tulipanes-eternos-1", src: `${floresAmarillas21sPath}/tulipanes eternos/1.jpg`, alt: "Tulipanes eternos del Combo Flores Amarillas (temporada 2026)" },
+            ],
+          },
+        ],
+      },
+      {
         id: "catalogo-edicion-limitada",
         label: "Catálogo: Edición limitada",
         cover: `${floresAmarillas2Path}/maxi girasol/1.jpg`,
@@ -440,6 +539,132 @@ export const storeCollections: StoreCollection[] = [
             label: "Margarita gerberas",
             media: [
               { id: "fa2-margarita-gerberas-1", src: `${floresAmarillas2Path}/margarita gerberas/8.jpg`, alt: "Margarita gerberas del Combo Flores Amarillas (edición limitada)" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "bouquet",
+    label: "Bouquet",
+    description: "Bouquets de rosas eternas. Cada imagen puede mostrar una opción o varias.",
+    cover: `${bouquetPath}/bouquet de rosas eternas/1.jpg`,
+    catalogs: [
+      {
+        id: "catalogo-bouquet",
+        label: "Bouquet",
+        cover: `${bouquetPath}/bouquet de rosas eternas/1.jpg`,
+        categories: [
+          {
+            id: "bouquet-de-rosas-eternas",
+            label: "Bouquet de rosas eternas",
+            media: [
+              { id: "bq-rosas-eternas-1", src: `${bouquetPath}/bouquet de rosas eternas/1.jpg`, alt: "Bouquet de rosas eternas" },
+              { id: "bq-rosas-eternas-2", src: `${bouquetPath}/bouquet de rosas eternas/2.jpg`, alt: "Bouquet de rosas eternas" },
+              { id: "bq-rosas-eternas-3", src: `${bouquetPath}/bouquet de rosas eternas/3.jpg`, alt: "Bouquet de rosas eternas" },
+              { id: "bq-rosas-eternas-4", src: `${bouquetPath}/bouquet de rosas eternas/4.jpg`, alt: "Bouquet de rosas eternas" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "buchones",
+    label: "Buchones",
+    description: "Buchones de cumpleaños y ramos buchones. Cada imagen puede mostrar una opción o varias.",
+    cover: `${buchonesPath}/buchones de cumpleaños/1.jpg`,
+    catalogs: [
+      {
+        id: "catalogo-buchones",
+        label: "Buchones",
+        cover: `${buchonesPath}/buchones de cumpleaños/1.jpg`,
+        categories: [
+          {
+            id: "buchones-de-cumpleanos",
+            label: "Buchones de cumpleaños",
+            media: [
+              { id: "bu-cumpleanos-1", src: `${buchonesPath}/buchones de cumpleaños/1.jpg`, alt: "Buchón de cumpleaños" },
+              { id: "bu-cumpleanos-2", src: `${buchonesPath}/buchones de cumpleaños/2.jpg`, alt: "Buchón de cumpleaños" },
+              { id: "bu-cumpleanos-3", src: `${buchonesPath}/buchones de cumpleaños/3.jpg`, alt: "Buchón de cumpleaños" },
+              { id: "bu-cumpleanos-4", src: `${buchonesPath}/buchones de cumpleaños/4.jpg`, alt: "Buchón de cumpleaños" },
+              { id: "bu-cumpleanos-5", src: `${buchonesPath}/buchones de cumpleaños/5.jpg`, alt: "Buchón de cumpleaños" },
+              { id: "bu-cumpleanos-6", src: `${buchonesPath}/buchones de cumpleaños/6.jpg`, alt: "Buchón de cumpleaños" },
+            ],
+          },
+          {
+            id: "ramos-buchones-2",
+            label: "Ramos buchones 2",
+            media: [
+              { id: "bu-ramos-2-1", src: `${buchonesPath}/ramos buchones 2/1.jpg`, alt: "Ramo buchón" },
+              { id: "bu-ramos-2-2", src: `${buchonesPath}/ramos buchones 2/2.jpg`, alt: "Ramo buchón" },
+              { id: "bu-ramos-2-3", src: `${buchonesPath}/ramos buchones 2/3.jpg`, alt: "Ramo buchón" },
+              { id: "bu-ramos-2-4", src: `${buchonesPath}/ramos buchones 2/4.jpg`, alt: "Ramo buchón" },
+              { id: "bu-ramos-2-5", src: `${buchonesPath}/ramos buchones 2/5.jpg`, alt: "Ramo buchón" },
+              { id: "bu-ramos-2-6", src: `${buchonesPath}/ramos buchones 2/6.jpg`, alt: "Ramo buchón" },
+              { id: "bu-ramos-2-7", src: `${buchonesPath}/ramos buchones 2/7.jpg`, alt: "Ramo buchón" },
+              { id: "bu-ramos-2-8", src: `${buchonesPath}/ramos buchones 2/8.jpg`, alt: "Ramo buchón" },
+              { id: "bu-ramos-2-9", src: `${buchonesPath}/ramos buchones 2/9.jpg`, alt: "Ramo buchón" },
+              { id: "bu-ramos-2-10", src: `${buchonesPath}/ramos buchones 2/10.jpg`, alt: "Ramo buchón" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "caja-con-bombones",
+    label: "Caja con bombones",
+    description: "Caja corazón con dedicatoria. Cada imagen puede mostrar una opción o varias.",
+    cover: `${cajaBombonesPath}/caja corazon con dedicatoria/1.jpg`,
+    catalogs: [
+      {
+        id: "catalogo-caja-con-bombones",
+        label: "Caja con bombones",
+        cover: `${cajaBombonesPath}/caja corazon con dedicatoria/1.jpg`,
+        categories: [
+          {
+            id: "caja-corazon-con-dedicatoria",
+            label: "Caja corazón con dedicatoria",
+            media: [
+              { id: "cb-caja-corazon-1", src: `${cajaBombonesPath}/caja corazon con dedicatoria/1.jpg`, alt: "Caja corazón con dedicatoria" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "tulipanes-eternos",
+    label: "Tulipanes eternos",
+    description: "Tulipanes eternos: ramo de 3, ramo de 6 y tulipán en maceta. Cada imagen puede mostrar una opción o varias.",
+    cover: `${tulipanesEternosPath}/ramo 3 tulipanes eternos/1.jpg`,
+    catalogs: [
+      {
+        id: "catalogo-tulipanes-eternos",
+        label: "Tulipanes eternos",
+        cover: `${tulipanesEternosPath}/ramo 3 tulipanes eternos/1.jpg`,
+        categories: [
+          {
+            id: "ramo-3-tulipanes-eternos",
+            label: "Ramo 3 tulipanes eternos",
+            media: [
+              { id: "te-ramo-3-1", src: `${tulipanesEternosPath}/ramo 3 tulipanes eternos/1.jpg`, alt: "Ramo de 3 tulipanes eternos" },
+            ],
+          },
+          {
+            id: "ramo-de-6-tulipanes",
+            label: "Ramo de 6 tulipanes",
+            media: [
+              { id: "te-ramo-6-1", src: `${tulipanesEternosPath}/ramo de 6 tulipanes/1.jpg`, alt: "Ramo de 6 tulipanes" },
+            ],
+          },
+          {
+            id: "tulipan-en-maceta",
+            label: "Tulipán en maceta",
+            media: [
+              { id: "te-maceta-1", src: `${tulipanesEternosPath}/tulipan en maceta/1.jpg`, alt: "Tulipán en maceta" },
             ],
           },
         ],
